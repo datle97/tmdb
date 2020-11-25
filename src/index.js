@@ -16,7 +16,7 @@ const ScrollToTop = () => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename="/tmdb">
       <ScrollToTop />
       <App />
     </BrowserRouter>
