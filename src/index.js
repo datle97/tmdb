@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { BrowserRouter, useLocation } from "react-router-dom";
+import { HashRouter, useLocation } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 
@@ -16,10 +16,10 @@ const ScrollToTop = () => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter basename="/tmdb">
+    <HashRouter basename="/tmdb">
       <ScrollToTop />
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
   document.getElementById("root")
 );
