@@ -16,7 +16,7 @@ const ScrollToTop = () => {
 
 ReactDOM.render(
   <Provider store={store}>
-    <HashRouter basename="/tmdb">
+    <HashRouter>
       <ScrollToTop />
       <App />
     </HashRouter>
