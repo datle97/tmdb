@@ -73,7 +73,7 @@ const Details = ({ details, release_dates, created_by }) => {
   return (
     <div className={classes.backdrop}>
       <Container className={classes.container}>
-        <Grid container spacing={5} alignItems="center" justify="center">
+        <Grid container spacing={3} alignItems="center" justify="center">
           <Grid item md={3} xs={6}>
             <CardMedia
               component="img"

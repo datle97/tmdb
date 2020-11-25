@@ -6,13 +6,12 @@ const StyledToggleButton = withStyles((theme) => ({
   root: {
     color: theme.palette.primary.main,
     textTransform: "none",
-    // 50% height buttonGroup
     borderRadius: 15,
     padding: theme.spacing(0, 2),
     "&$selected": {
       backgroundColor: theme.palette.primary.main,
       "& $label": {
-        color: theme.palette.primary.main,
+        color: '#fff',
         // text gradient
         backgroundImage: `linear-gradient(to right, ${green[100]}, ${green["A400"]})`,
         "-webkit-background-clip": "text",
