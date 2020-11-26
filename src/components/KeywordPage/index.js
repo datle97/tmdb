@@ -46,9 +46,7 @@ const KeywordPage = ({ match }) => {
     <Loading />
   ) : (
     <>
-      <BackgroundHeader
-        children={<CompanyHeader details={keyword} movies={keyword.movies} />}
-      />
+      <BackgroundHeader children={<CompanyHeader details={keyword} />} />
       <Container>
         {keyword.movies.results.map((movie) => (
           <MovieCard key={movie.id} details={movie} />

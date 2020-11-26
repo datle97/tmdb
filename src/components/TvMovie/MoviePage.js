@@ -47,14 +47,14 @@ const MoviePage = ({ match }) => {
               credits={movie.credits.cast}
               media_type="movie"
             />
-            <Media video={movie.videos} details={movie} />
+            <Media details={movie} />
             <Recommendations
               recommendations={movie.recommendations}
               media_type="movie"
             />
           </Grid>
           <Grid item md={3} xs={12} className={classes.rightColumn}>
-            <Facts details={movie} keywords={movie.keywords} />
+            <Facts details={movie} />
           </Grid>
         </Grid>
       </Container>

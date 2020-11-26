@@ -51,7 +51,7 @@ const CompanyPage = ({ match }) => {
       <BackgroundHeader
         children={
           <>
-            <CompanyHeader details={company} movies={company.movies} />
+            <CompanyHeader details={company}/>
             <CompanyInfo details={company} />
           </>
         }

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PersonalInfo = ({ details, external_ids }) => {
+const PersonalInfo = ({ details }) => {
   const classes = useStyles();
   return (
     <>
@@ -34,10 +34,10 @@ const PersonalInfo = ({ details, external_ids }) => {
         />
       </div>
       <div className={classes.icons}>
-        {external_ids.twitter_id && (
+        {details.external_ids.twitter_id && (
           <Tooltip title="Visit Twitter" arrow>
             <a
-              href={external_ids.twitter_id}
+              href={details.external_ids.twitter_id}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -45,10 +45,10 @@ const PersonalInfo = ({ details, external_ids }) => {
             </a>
           </Tooltip>
         )}
-        {external_ids.instagram_id && (
+        {details.external_ids.instagram_id && (
           <Tooltip title="Visit Instagram" arrow>
             <a
-              href={external_ids.instagram_id}
+              href={details.external_ids.instagram_id}
               target="_blank"
               rel="noopener noreferrer"
             >

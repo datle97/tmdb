@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 0,
   },
 }));
-const Media = ({ video, details }) => {
+const Media = ({ details }) => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
 
@@ -52,11 +52,11 @@ const Media = ({ video, details }) => {
         </Box>
         <Box display="flex" alignItems="center" height={300}>
           {value === 0 &&
-            (video.key ? (
+            (details.videos.key ? (
               <CardMedia
                 component="iframe"
                 className={classes.cardVideo}
-                src={video.key}
+                src={details.videos.key}
               />
             ) : (
               <Typography>This video is unavailable</Typography>

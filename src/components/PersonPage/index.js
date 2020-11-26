@@ -39,7 +39,7 @@ const PersonPage = ({ match }) => {
     <Container>
       <Grid container spacing={3}>
         <Grid item md={3} xs={12} className={classes.leftColumn}>
-          <PersonalInfo details={person} external_ids={person.external_ids} />
+          <PersonalInfo details={person} />
         </Grid>
         <Grid item md={9} xs={12} className={classes.rightColumn}>
           <Biography details={person} />

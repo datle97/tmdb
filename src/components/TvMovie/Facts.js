@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Facts = ({ details, keywords, networks }) => {
+const Facts = ({ details }) => {
   const classes = useStyles();
   return (
     <>
@@ -46,16 +46,16 @@ const Facts = ({ details, keywords, networks }) => {
           </div>
         </>
       )}
-      {networks && (
+      {details.networks && (
         <>
           <div>
             <Typography variant="subtitle1">Network</Typography>
-            {networks.logo_path ? (
+            {details.networks.logo_path ? (
               <Link to="#">
                 <img
-                  src={networks.logo_path}
-                  alt={networks.name}
-                  title={networks.name}
+                  src={details.networks.logo_path}
+                  alt={details.networks.name}
+                  title={details.networks.name}
                 />
               </Link>
             ) : (
@@ -70,8 +70,8 @@ const Facts = ({ details, keywords, networks }) => {
       )}
       <div>
         <Typography variant="subtitle1">Keywords</Typography>
-        {keywords.length ? (
-          keywords.map((keyword) => (
+        {details.keywords.length ? (
+          details.keywords.map((keyword) => (
             <Button
               key={keyword.id}
               component={Link}

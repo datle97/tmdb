@@ -48,18 +48,14 @@ const TvPage = ({ match }) => {
             <LastSeason
               last_season={tvShow.seasons[tvShow.seasons.length - 1]}
             />
-            <Media video={tvShow.videos} details={tvShow} />
+            <Media details={tvShow} />
             <Recommendations
               recommendations={tvShow.recommendations}
               media_type="tv"
             />
           </Grid>
           <Grid item md={3} xs={12} className={classes.rightColumn}>
-            <Facts
-              details={tvShow}
-              networks={tvShow.networks}
-              keywords={tvShow.keywords}
-            />
+            <Facts details={tvShow} />
           </Grid>
         </Grid>
       </Container>

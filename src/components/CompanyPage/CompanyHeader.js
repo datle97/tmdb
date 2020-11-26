@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    overflow: "hidden",
   },
   cardMedia: {
     height: 50,
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // dùng cho Company, Keyword
-const CompanyHeader = ({ details, movies }) => {
+const CompanyHeader = ({ details }) => {
   const classes = useStyles();
   return (
     <Toolbar className={classes.toolbar}>
@@ -30,7 +31,9 @@ const CompanyHeader = ({ details, movies }) => {
       ) : (
         <Typography variant="h5">{details.name}</Typography>
       )}
-      <Typography variant="h6">{movies.total_results} movies</Typography>
+      <Typography variant="h6">
+        {details.movies.total_results} movies
+      </Typography>
     </Toolbar>
   );
 };
