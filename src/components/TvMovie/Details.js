@@ -54,19 +54,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Details = ({ details, release_dates, created_by }) => {
+const Details = ({ details, created_by }) => {
   const classes = useStyles({ backdrop_path: details.backdrop_path });
   const { isAuth } = useSelector((state) => state.user);
-  const { watchlist, isAdding, isRemoving } = useSelector(
+  const { watchlist, loading, isAdding, isRemoving } = useSelector(
     (state) => state.watchlist
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isAuth) {
+    if (!watchlist.length && isAuth) {
       dispatch(fetchWatchlist());
     }
-  }, [dispatch, isAuth]);
+  }, [dispatch, watchlist, isAuth]);
+
+  const handleAddMovie = () => {
+    const movie = {
+      id: details.id,
+      media_type: details.media_type,
+      title: details.title,
+      poster_path: details.poster_path,
+      release_date: details.release_date,
+      overview: details.overview,
+      vote_average: details.vote_average,
+      popularity: details.popularity,
+    };
+    dispatch(addMovie(movie));
+  };
 
   // kiểm tra xem movie đã tồn tại trong watchlist hay chưa => add button to remove button
   const isAdded = watchlist.some((movie) => movie.id === details.id);
@@ -102,23 +116,23 @@ const Details = ({ details, release_dates, created_by }) => {
                 )}
               </Typography>
               <Typography variant="body2">
-                {release_dates && (
+                {details.release_dates && (
                   <>
-                    {release_dates.certification && (
+                    {details.release_dates.certification && (
                       <span className={classes.certification}>
-                        {release_dates.certification}
+                        {details.release_dates.certification}
                       </span>
                     )}{" "}
-                    {release_dates.release_date && (
+                    {details.release_dates.release_date && (
                       <span>
-                        {DateTime.fromISO(release_dates.release_date).toFormat(
-                          "MM/dd/yyyy"
-                        )}
+                        {DateTime.fromISO(
+                          details.release_dates.release_date
+                        ).toFormat("MM/dd/yyyy")}
                       </span>
                     )}{" "}
-                    {release_dates.iso_3166_1 && (
+                    {details.release_dates.iso_3166_1 && (
                       <span>
-                        {`(${release_dates.iso_3166_1})`} {" \u2022 "}
+                        {`(${details.release_dates.iso_3166_1})`} {" \u2022 "}
                       </span>
                     )}
                   </>
@@ -180,7 +194,7 @@ const Details = ({ details, release_dates, created_by }) => {
                           ? () =>
                               alert("Login to add this movie to your watchlist")
                           : !isAdded
-                          ? () => dispatch(addMovie(details))
+                          ? () => handleAddMovie()
                           : () => dispatch(removeMovie(details.id))
                       }
                     >
@@ -190,7 +204,7 @@ const Details = ({ details, release_dates, created_by }) => {
                       />
                     </Fab>
                   </Tooltip>
-                  {(isAdding || isRemoving) && (
+                  {(loading || isAdding || isRemoving) && (
                     <CircularProgress
                       size={48}
                       className={classes.fabProgress}

@@ -38,11 +38,7 @@ const MoviePage = ({ match }) => {
     <Loading />
   ) : (
     <>
-      <Details
-        details={movie}
-        release_dates={movie.release_dates}
-        created_by={movie.credits.crew.slice(0, 5)}
-      />
+      <Details details={movie} created_by={movie.credits.crew.slice(0, 5)} />
       <Container>
         <Grid container spacing={3} justify="center">
           <Grid item md={9} xs={12} className={classes.leftColumn}>

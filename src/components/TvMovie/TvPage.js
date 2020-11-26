@@ -40,11 +40,7 @@ const TvPage = ({ match }) => {
     <Loading />
   ) : (
     <>
-      <Details
-        details={tvShow}
-        release_dates={tvShow.release_dates}
-        created_by={tvShow.created_by}
-      />
+      <Details details={tvShow} created_by={tvShow.created_by} />
       <Container>
         <Grid container spacing={3} justify="center">
           <Grid item md={9} xs={12} className={classes.leftColumn}>

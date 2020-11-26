@@ -2,10 +2,13 @@ import axios from "axios";
 import {
   GET_WATCHLIST_REQUEST,
   GET_WATCHLIST_SUCCESS,
-  ADD_TO_WATCHLIST_SUCCESS,
-  REMOVE_FROM_WATCHLIST_SUCCESS,
-  REMOVE_FROM_WATCHLIST_REQUEST,
+  GET_WATCHLIST_ERROR,
   ADD_TO_WATCHLIST_REQUEST,
+  ADD_TO_WATCHLIST_SUCCESS,
+  ADD_TO_WATCHLIST_ERROR,
+  REMOVE_FROM_WATCHLIST_REQUEST,
+  REMOVE_FROM_WATCHLIST_SUCCESS,
+  REMOVE_FROM_WATCHLIST_ERROR,
 } from "./types";
 
 export const authHeader = () => {
@@ -29,6 +32,7 @@ export const fetchWatchlist = () => async (dispatch) => {
     );
     dispatch(getWatchListSuccess(data.watchlist));
   } catch (err) {
+    dispatch(getWatchListError());
     console.log(err.response);
   }
 };
@@ -43,6 +47,7 @@ export const addMovie = (movie) => async (dispatch) => {
     );
     dispatch(addToWatchlistSuccess(data));
   } catch (err) {
+    dispatch(addToWatchlistError());
     console.log(err.response);
   }
 };
@@ -57,6 +62,7 @@ export const removeMovie = (id) => async (dispatch) => {
     );
     dispatch(removeFromWatchlistSuccess(data.id));
   } catch (err) {
+    dispatch(removeFromWatchlistError());
     console.log(err.response);
   }
 };
@@ -70,6 +76,10 @@ const getWatchListSuccess = (watchlist) => ({
   watchlist,
 });
 
+const getWatchListError = () => ({
+  type: GET_WATCHLIST_ERROR,
+});
+
 const addToWatchlistRequest = () => ({
   type: ADD_TO_WATCHLIST_REQUEST,
 });
@@ -77,6 +87,10 @@ const addToWatchlistRequest = () => ({
 const addToWatchlistSuccess = (movie) => ({
   type: ADD_TO_WATCHLIST_SUCCESS,
   movie,
+});
+
+const addToWatchlistError = () => ({
+  type: ADD_TO_WATCHLIST_ERROR,
 });
 
 const removeFromWatchlistRequest = (id) => ({
@@ -87,4 +101,8 @@ const removeFromWatchlistRequest = (id) => ({
 const removeFromWatchlistSuccess = (id) => ({
   type: REMOVE_FROM_WATCHLIST_SUCCESS,
   id,
+});
+
+const removeFromWatchlistError = () => ({
+  type: REMOVE_FROM_WATCHLIST_ERROR,
 });
