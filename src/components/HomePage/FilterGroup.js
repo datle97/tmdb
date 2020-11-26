@@ -4,6 +4,13 @@ import { green } from "@material-ui/core/colors";
 
 const StyledToggleButton = withStyles((theme) => ({
   root: {
+    // Typography subtitle1
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: "bold",
+    fontSize: "1rem",
+    lineHeight: 1.75,
+    letterSpacing: "0.00938em",
+
     color: theme.palette.primary.main,
     textTransform: "none",
     borderRadius: 15,
@@ -11,11 +18,15 @@ const StyledToggleButton = withStyles((theme) => ({
     "&$selected": {
       backgroundColor: theme.palette.primary.main,
       "& $label": {
-        color: '#fff',
+        color: "#fff",
         // text gradient
         backgroundImage: `linear-gradient(to right, ${green[100]}, ${green["A400"]})`,
-        "-webkit-background-clip": "text",
-        "-webkit-text-fill-color": "transparent",
+        backgroundClip: "text",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+
+        // cho safari khong nhan WebkitBackgroundClip
+        display: "inline",
       },
       "&:hover": {
         backgroundColor: theme.palette.primary.main,
@@ -52,12 +63,8 @@ const FilterGroup = ({
         className={classes.margin}
         size="small"
       >
-        <StyledToggleButton value={value1}>
-          <Typography variant="subtitle1">{label1}</Typography>
-        </StyledToggleButton>
-        <StyledToggleButton value={value2}>
-          <Typography variant="subtitle1">{label2}</Typography>
-        </StyledToggleButton>
+        <StyledToggleButton value={value1}>{label1}</StyledToggleButton>
+        <StyledToggleButton value={value2}>{label2}</StyledToggleButton>
       </ToggleButtonGroup>
     </Box>
   );

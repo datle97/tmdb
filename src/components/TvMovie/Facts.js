@@ -1,6 +1,7 @@
 import { Typography, makeStyles, Tooltip, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import LinkIcon from "@material-ui/icons/Link";
+import isoLangs from "../common/isoLangs";
 
 const useStyles = makeStyles((theme) => ({
   keyword: {
@@ -10,12 +11,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Facts = ({ details, keywords, networks }) => {
   const classes = useStyles();
-  // language code => language name
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DisplayNames
-  const languageNames = new Intl.DisplayNames(["en"], {
-    type: "language",
-  });
-
   return (
     <>
       <div>
@@ -32,7 +27,7 @@ const Facts = ({ details, keywords, networks }) => {
       <div>
         <Typography variant="subtitle1">Original Language</Typography>
         <Typography variant="body2">
-          {languageNames.of(details.original_language)}
+          {isoLangs[details.original_language].name}
         </Typography>
       </div>
       {!isNaN(details.budget) && (

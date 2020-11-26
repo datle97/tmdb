@@ -18,12 +18,14 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        error: {},
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
         loading: false,
         isAuth: true,
+        error: {},
         user: action.user,
       };
     case LOGIN_FAILURE:
@@ -37,6 +39,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         isAuth: false,
+        error: {},
         user: {},
       };
     default:

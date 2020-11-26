@@ -25,11 +25,24 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: theme.spacing(1),
+      "&:last-child": {
+        paddingBottom: theme.spacing(1),
+      },
+    },
   },
   overview: {
     display: "-webkit-box",
     WebkitBoxOrient: "vertical",
     WebkitLineClamp: 2,
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+  noWrap: {
+    display: "-webkit-box",
+    WebkitBoxOrient: "vertical",
+    WebkitLineClamp: 1,
     overflow: "hidden",
     textOverflow: "ellipsis",
   },
@@ -59,6 +72,7 @@ const MovieCard = ({ details, media_type = "movie" }) => {
             variant="subtitle1"
             component={Link}
             to={`/${media_type}/${details.id}`}
+            className={classes.noWrap}
           >
             {details.title}
           </Typography>

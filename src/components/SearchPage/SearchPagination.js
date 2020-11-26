@@ -1,11 +1,11 @@
-import { Box } from "@material-ui/core";
+import { Box, useMediaQuery } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 
 import { useHistory } from "react-router-dom";
 
 const SearchPagination = ({ total_pages, params }) => {
   const history = useHistory();
-
+  const matches = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const handleChange = (event, newPage) => {
     history.push(`/search/${params.type}/${params.query}/${newPage}`);
   };
@@ -18,6 +18,7 @@ const SearchPagination = ({ total_pages, params }) => {
           page={parseInt(params.page)}
           onChange={handleChange}
           shape="rounded"
+          size={!matches ? "medium" : "small"}
         />
       </Box>
     )
