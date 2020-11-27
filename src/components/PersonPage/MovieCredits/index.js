@@ -30,7 +30,7 @@ const MovieCredits = ({ cast, crew }) => {
       <FormControl className={classes.formControl}>
         <Select value={value} onChange={handleChange} disableUnderline>
           <MenuItem value="all">All ({cast.length + crew.length})</MenuItem>
-          {cast.length && (
+          {cast.length > 0 && (
             <MenuItem value="acting">Acting ({cast.length})</MenuItem>
           )}
           {modifiedCrew.map((crew) => (

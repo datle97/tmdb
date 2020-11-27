@@ -4,7 +4,7 @@ import MovieCard from "../common/MovieCard";
 import SearchPagination from "./SearchPagination";
 
 const Collections = ({ collections, params }) => {
-  return collections.results.length ? (
+  return collections.results.length > 0 ? (
     <>
       {collections.results.map((collection) => (
         <MovieCard

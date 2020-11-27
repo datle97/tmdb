@@ -1,18 +1,18 @@
 import {
   GET_WATCHLIST_REQUEST,
   GET_WATCHLIST_SUCCESS,
-  GET_WATCHLIST_ERROR,
+  GET_WATCHLIST_FAILURE,
   ADD_TO_WATCHLIST_REQUEST,
   ADD_TO_WATCHLIST_SUCCESS,
-  ADD_TO_WATCHLIST_ERROR,
+  ADD_TO_WATCHLIST_FAILURE,
   REMOVE_FROM_WATCHLIST_REQUEST,
   REMOVE_FROM_WATCHLIST_SUCCESS,
-  REMOVE_FROM_WATCHLIST_ERROR,
+  REMOVE_FROM_WATCHLIST_FAILURE,
 } from "../actions/types";
 
 const initialState = {
   watchlist: [],
-  loading: false,
+  isLoading: false,
   isAdding: false,
   isRemoving: null,
 };
@@ -22,18 +22,18 @@ const watchlistReducer = (state = initialState, action) => {
     case GET_WATCHLIST_REQUEST:
       return {
         ...state,
-        loading: true,
+        isLoading: true,
       };
     case GET_WATCHLIST_SUCCESS:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         watchlist: action.watchlist,
       };
-    case GET_WATCHLIST_ERROR:
+    case GET_WATCHLIST_FAILURE:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
       };
     case ADD_TO_WATCHLIST_REQUEST:
       return {
@@ -46,7 +46,7 @@ const watchlistReducer = (state = initialState, action) => {
         isAdding: false,
         watchlist: [action.movie, ...state.watchlist],
       };
-    case ADD_TO_WATCHLIST_ERROR:
+    case ADD_TO_WATCHLIST_FAILURE:
       return {
         ...state,
         isAdding: false,
@@ -62,7 +62,7 @@ const watchlistReducer = (state = initialState, action) => {
         isRemoving: null,
         watchlist: state.watchlist.filter((movie) => movie.id !== action.id),
       };
-    case REMOVE_FROM_WATCHLIST_ERROR:
+    case REMOVE_FROM_WATCHLIST_FAILURE:
       return {
         ...state,
         isRemoving: null,

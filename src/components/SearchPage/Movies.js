@@ -4,7 +4,7 @@ import MovieCard from "../common/MovieCard";
 import SearchPagination from "./SearchPagination";
 
 const Movies = ({ movies, params }) => {
-  return movies.results.length ? (
+  return movies.results.length > 0 ? (
     <>
       {movies.results.map((movie) => (
         <MovieCard key={movie.id} details={movie} media_type={params.type} />

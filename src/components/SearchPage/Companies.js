@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Companies = ({ companies, params }) => {
   const classes = useStyles();
-  return companies.results.length ? (
+  return companies.results.length > 0 ? (
     <>
       {companies.results.map((company) => (
         <Box

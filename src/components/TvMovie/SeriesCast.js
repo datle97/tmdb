@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
   },
   gridList: {
-    width: "100%",
+    flexGrow: 1,
     flexWrap: "nowrap",
     transform: "translateZ(0)",
     marginBottom: "0 !important",

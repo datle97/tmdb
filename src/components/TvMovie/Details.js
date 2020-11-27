@@ -1,5 +1,4 @@
 // Dùng cho các page: Tv, Movie, Collection
-import { useEffect } from "react";
 import {
   CardMedia,
   Typography,
@@ -14,11 +13,7 @@ import BookmarkIcon from "@material-ui/icons/Bookmark";
 import StyledDoughnut from "../common/CustomDoughnut";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addMovie,
-  fetchWatchlist,
-  removeMovie,
-} from "../../actions/watchlistActions";
+import { addMovie, removeMovie } from "../../actions/watchlistActions";
 import { DateTime } from "luxon";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,16 +52,10 @@ const useStyles = makeStyles((theme) => ({
 const Details = ({ details, created_by }) => {
   const classes = useStyles({ backdrop_path: details.backdrop_path });
   const { isAuth } = useSelector((state) => state.user);
-  const { watchlist, loading, isAdding, isRemoving } = useSelector(
+  const { watchlist, isLoading, isAdding, isRemoving } = useSelector(
     (state) => state.watchlist
   );
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!watchlist.length && isAuth) {
-      dispatch(fetchWatchlist());
-    }
-  }, [dispatch, watchlist, isAuth]);
 
   const handleAddMovie = () => {
     const movie = {
@@ -144,7 +133,7 @@ const Details = ({ details, created_by }) => {
                       {index < details.genres.length - 1 && ", "}
                     </span>
                   ))}
-                {details.runtime && (
+                {details.runtime > 0 && (
                   <span>
                     {" \u2022 "}
                     {
@@ -204,7 +193,7 @@ const Details = ({ details, created_by }) => {
                       />
                     </Fab>
                   </Tooltip>
-                  {(loading || isAdding || isRemoving) && (
+                  {(isLoading || isAdding || isRemoving) && (
                     <CircularProgress
                       size={48}
                       className={classes.fabProgress}

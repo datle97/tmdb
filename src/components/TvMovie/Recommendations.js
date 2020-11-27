@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
   },
   gridList: {
+    flexGrow: 1,
     flexWrap: "nowrap",
     transform: "translateZ(0)",
 
@@ -37,7 +38,7 @@ const Recommendations = ({ recommendations, media_type }) => {
       <Typography variant="h6" gutterBottom>
         Recommendations
       </Typography>
-      {recommendations.length ? (
+      {recommendations.length > 0 ? (
         <div className={classes.recommendations}>
           <GridList
             className={classes.gridList}

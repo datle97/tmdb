@@ -70,7 +70,7 @@ const Facts = ({ details }) => {
       )}
       <div>
         <Typography variant="subtitle1">Keywords</Typography>
-        {details.keywords.length ? (
+        {details.keywords.length > 0 ? (
           details.keywords.map((keyword) => (
             <Button
               key={keyword.id}

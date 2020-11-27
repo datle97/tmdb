@@ -9,7 +9,7 @@ const initialState = {
   isAuth: !!localStorage.getItem("token"),
   user: {},
   error: {},
-  loading: false,
+  isLoading: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -17,13 +17,13 @@ const userReducer = (state = initialState, action) => {
     case LOGIN_REQUEST:
       return {
         ...state,
-        loading: true,
+        isLoading: true,
         error: {},
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         isAuth: true,
         error: {},
         user: action.user,
@@ -31,13 +31,13 @@ const userReducer = (state = initialState, action) => {
     case LOGIN_FAILURE:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         error: action.error,
       };
     case LOGOUT:
       return {
         ...state,
-        loading: false,
+        isLoading: false,
         isAuth: false,
         error: {},
         user: {},

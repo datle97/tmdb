@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 
 const People = ({ people, params }) => {
   const classes = useStyles();
-  return people.results.length ? (
+  return people.results.length > 0 ? (
     <>
       {people.results.map((person) => (
         <Box key={person.id} display="flex" alignItems="center" mb={1}>

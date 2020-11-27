@@ -2,13 +2,13 @@ import axios from "axios";
 import {
   GET_WATCHLIST_REQUEST,
   GET_WATCHLIST_SUCCESS,
-  GET_WATCHLIST_ERROR,
+  GET_WATCHLIST_FAILURE,
   ADD_TO_WATCHLIST_REQUEST,
   ADD_TO_WATCHLIST_SUCCESS,
-  ADD_TO_WATCHLIST_ERROR,
+  ADD_TO_WATCHLIST_FAILURE,
   REMOVE_FROM_WATCHLIST_REQUEST,
   REMOVE_FROM_WATCHLIST_SUCCESS,
-  REMOVE_FROM_WATCHLIST_ERROR,
+  REMOVE_FROM_WATCHLIST_FAILURE,
 } from "./types";
 
 export const authHeader = () => {
@@ -77,7 +77,7 @@ const getWatchListSuccess = (watchlist) => ({
 });
 
 const getWatchListError = () => ({
-  type: GET_WATCHLIST_ERROR,
+  type: GET_WATCHLIST_FAILURE,
 });
 
 const addToWatchlistRequest = () => ({
@@ -90,7 +90,7 @@ const addToWatchlistSuccess = (movie) => ({
 });
 
 const addToWatchlistError = () => ({
-  type: ADD_TO_WATCHLIST_ERROR,
+  type: ADD_TO_WATCHLIST_FAILURE,
 });
 
 const removeFromWatchlistRequest = (id) => ({
@@ -104,5 +104,5 @@ const removeFromWatchlistSuccess = (id) => ({
 });
 
 const removeFromWatchlistError = () => ({
-  type: REMOVE_FROM_WATCHLIST_ERROR,
+  type: REMOVE_FROM_WATCHLIST_FAILURE,
 });

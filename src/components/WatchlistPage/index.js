@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container, Grid, makeStyles } from "@material-ui/core";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchWatchlist } from "../../actions/watchlistActions";
+import { useSelector } from "react-redux";
 import MovieCard from "./MovieCard";
 import ProfileHeader from "./ProfileHeader";
 import BackgroundHeader from "../common/BackgroundHeader";
@@ -18,14 +17,9 @@ const useStyles = makeStyles((theme) => ({
 const WatchlistPage = () => {
   const classes = useStyles();
   const { user } = useSelector((state) => state.user);
-  const { watchlist, loading } = useSelector((state) => state.watchlist);
-  const dispatch = useDispatch();
+  const { watchlist, isLoading } = useSelector((state) => state.watchlist);
   const [type, setType] = useState("movie");
   const [sortBy, setSortBy] = useState("date_added");
-
-  useEffect(() => {
-    dispatch(fetchWatchlist());
-  }, [dispatch]);
 
   const handleType = (event, newValue) => {
     setType(newValue);
@@ -40,7 +34,7 @@ const WatchlistPage = () => {
     <>
       <BackgroundHeader children={<ProfileHeader user={user} />} />
       <Container>
-        {loading ? (
+        {isLoading ? (
           <Loading />
         ) : (
           <>

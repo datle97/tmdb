@@ -21,14 +21,15 @@ import MovieCreditsPage from "./components/TvMovieCredits/MovieCreditsPage";
 import TvCreditsPage from "./components/TvMovieCredits/TvCreditsPage";
 import PrivateRoute from "./components/common/PrivateRoute";
 import PublicRoute from "./components/common/PublicRoute";
+import { fetchWatchlist } from "./actions/watchlistActions";
 
 const App = () => {
   const dispatch = useDispatch();
   const { isAuth } = useSelector((state) => state.user);
   useEffect(() => {
-    // nếu có token trong localStorage
     if (isAuth) {
       dispatch(fetchProfile());
+      dispatch(fetchWatchlist());
     }
   }, [dispatch, isAuth]);
   return (

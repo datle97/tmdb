@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "150%",
   },
   gridList: {
+    flexGrow: 1,
     flexWrap: "nowrap",
     transform: "translateZ(0)",
     // spacing tự thêm margin root => lam mat thanh scroll

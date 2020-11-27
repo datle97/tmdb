@@ -4,7 +4,7 @@ import SearchPagination from "./SearchPagination";
 import { Link } from "react-router-dom";
 
 const Keywords = ({ keywords, params }) => {
-  return keywords.results.length ? (
+  return keywords.results.length > 0 ? (
     <>
       {keywords.results.map((keyword) => (
         <Typography key={keyword.id}>
