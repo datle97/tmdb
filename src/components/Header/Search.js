@@ -87,6 +87,9 @@ const Search = ({ paddingLeft = 2, searchRef, handleClose }) => {
         inputValue={inputValue}
         onInputChange={handleInputChange}
         options={options}
+        // filterOptions... disable the built-in filtering of the Autocomplete component by overriding the
+        // tránh lỗi khi type tự động autocomplete dựa trên các options hiện có (không chờ fetch các options từ api)
+        filterOptions={(options) => options}
         ref={searchRef}
         renderInput={(params) => (
           <InputBase
