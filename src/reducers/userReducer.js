@@ -22,7 +22,6 @@ const userReducer = (state = initialState, action) => {
       };
     case LOGIN_SUCCESS:
       return {
-        ...state,
         isLoading: false,
         isAuth: true,
         error: {},
@@ -36,7 +35,6 @@ const userReducer = (state = initialState, action) => {
       };
     case LOGOUT:
       return {
-        ...state,
         isLoading: false,
         isAuth: false,
         error: {},
